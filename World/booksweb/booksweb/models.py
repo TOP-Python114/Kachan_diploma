@@ -73,7 +73,6 @@ class Book(models.Model):
         'Author',
         help_text="Введите автора книги",
         verbose_name="Автор книги",
-        null=True
     )
     summary = models.TextField(
         max_length=1000,
