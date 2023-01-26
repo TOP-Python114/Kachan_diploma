@@ -85,6 +85,11 @@ class Book(models.Model):
         help_text="Должно содержать 13 символов",
         verbose_name="ISBN книги",
     )
+    file = models.FileField(
+        null=True,
+        blank=True
+    )
+
     def __str__(self):
         return self.title
 
