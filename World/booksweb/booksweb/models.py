@@ -86,7 +86,9 @@ class Book(models.Model):
     )
     file = models.FileField(
         null=True,
-        blank=True
+        blank=True,
+        upload_to='media/',
+
     )
 
     def __str__(self):
