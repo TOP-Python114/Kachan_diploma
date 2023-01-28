@@ -8,7 +8,7 @@ def main_page(request):
     num_visits = 0
     return render(
         request,
-        'main_page.html',
+        'booksweb/main_page.html',
         context={
             'num_books': num_books,
             'num_authors': num_authors,

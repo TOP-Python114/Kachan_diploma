@@ -1,0 +1,31 @@
+{% extends 'bootstrap5/bootstrap5.html' %}
+
+{% block bootstrap5_title %}
+    {{page_title|default: "Books home"}}
+{% endblock bootstrap5_title %}
+
+{% block bootstrap5_extra_head %}
+    {{page_title|default: "Books home"}}
+{% endblock bootstrap5_extra_head %}
+
+{% block bootstrap5_before_content %}
+<!-- header -->
+    <div class="container-fluid">
+        {% block header %}
+            {% include "includes/navbar.html" %}
+        {% endblock header %}
+    </div>
+<!-- /header -->
+{% endblock bootstrap5_before_content %}
+
+{% block bootstrap5_content %}
+{% endblock bootstrap5_content %}
+
+{% block bootstrap5_after_content %}
+    <p>Copyright Books home, 2023</p>
+{% endblock bootstrap5_after_content %}
+
+{% block bootstrap5_extra_script %}
+{% endblock bootstrap5_extra_script %}
+
+
