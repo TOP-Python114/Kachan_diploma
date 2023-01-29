@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Genre(models.Model):
@@ -94,7 +95,11 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('book-detail', args=[str(self.id)])
+
     def display_author(self):
         return ', '.join([author.last_name for author in self.author.all()])
 
     display_author.short_description = 'Авторы'
+
