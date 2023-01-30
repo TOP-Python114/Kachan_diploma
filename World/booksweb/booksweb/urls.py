@@ -7,7 +7,7 @@ from .views import BookListView, BookDetailView
 urlpatterns = [
     path('', main_page, name='main_page'),
     re_path(r'^books/$', BookListView.as_view(), name='books'),
-    re_path(r'^book/(?P<pk>\d+)$', BookDetailView.as_view(), name='book-detail'),
+    re_path(r'^book/(?P<pk>\d+)$', BookDetailView.as_view(), name='book_detail'),
 
 ]
 
