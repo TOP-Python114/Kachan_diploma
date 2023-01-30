@@ -3,6 +3,7 @@ from django.views import generic
 from django.http import HttpResponse
 from .models import Book, Author, Genre
 
+
 def main_page(request):
     num_books = Book.objects.all().count()
     num_authors = Author.objects.count()
@@ -17,12 +18,19 @@ def main_page(request):
         },
     )
 
+
 class BookListView(generic.ListView):
     model = Book
+    paginate_by = 3
 
 
 class BookDetailView(generic.DetailView):
     model = Book
+
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 4
 
 
 
