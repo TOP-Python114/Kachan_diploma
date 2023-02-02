@@ -1,7 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Book, Author, Genre
+from django.core.mail import send_mail, BadHeaderError
+from django.shortcuts import render
+
 
 
 def main_page(request):
@@ -19,6 +22,10 @@ def main_page(request):
             'num_visits': num_visits
         },
     )
+
+
+def contact_view(request):
+    send_mail('Восстановление пароля', 'Books_Home', 'bookshomeworld@mail.ru', ['my_bisness@mail.ru'])
 
 
 class BookListView(generic.ListView):

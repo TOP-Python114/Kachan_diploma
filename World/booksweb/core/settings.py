@@ -127,5 +127,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SESSION_SAVE_EVERY_REQUEST = True
 
 LOGIN_REDIRECT_URL = '/'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = 'bookshomeworld@mail.ru'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+SENDGRID_API_KEY = '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'
 
