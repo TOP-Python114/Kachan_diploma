@@ -11,4 +11,7 @@
             <a href="">{{ author.first_name }}
                 {{ author.last_name }}</a></p>
     {% endfor %}
+    <div>
+        <a href="{{book.file.url}}" download="{{book.file.url}}">Скачать</a>
+    </div>
 {% endblock bootstrap5_content %}
