@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import Book, Author, Genre
 from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render
+from django.conf import settings
 
 
 
@@ -25,7 +26,7 @@ def main_page(request):
 
 
 def contact_view(request):
-    send_mail('Восстановление пароля', 'Books_Home', 'bookshomeworld@mail.ru', ['my_bisness@mail.ru'])
+    send_mail('Восстановление пароля', 'Books_Home',  'my_bisness@mail.ru', {{ form.email }})
 
 
 class BookListView(generic.ListView):
