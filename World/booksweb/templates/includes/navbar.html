@@ -7,7 +7,7 @@
             <td><a href="{% url 'authors' %}">Все авторы</a></td>
             {% if user.is_superuser %}
                 <td><a href="{% url 'author_add' %}">Измение списка авторов</a></td>
-                <td><a href="{% url 'book_add' %}">Изменение списка книг</a></td>
+                <td><a href="{% url 'book_create' %}">Изменение списка книг</a></td>
             {% endif %}
             {% if user.is_authenticated %}
                 <td>Пользователь: {{ user.get_username }} </td>

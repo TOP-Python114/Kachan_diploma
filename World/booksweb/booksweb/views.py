@@ -1,12 +1,11 @@
 from django.views.generic import ListView, DetailView
-from .models import Book, Author
+from .models import Book, Author, Genre, Language
 from django.shortcuts import render
-from .forms import AuthorForm, BookForm
+from .forms import AuthorForm,BookModelForm
 from django.http.response import HttpResponseRedirect, HttpResponseNotFound
 from django.contrib.auth.decorators import user_passes_test
-
-
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 
 def main_page(request):
     num_books = Book.objects.all().count()
@@ -77,66 +76,74 @@ def author_edit(request, id):
             }
         )
 
-
-def book_add(request):
-    book = Book.objects.all()
-    bookform = BookForm()
-    return render(
-        request,
-        'booksweb/book_add.html',
-        context={
-            'form': bookform,
-            'book': book
-        },
-    )
-
-
-def book_create(request):
-    if request.method == 'POST':
-        form = BookForm(request.POST)
-        if form.is_valid():
-            book = Book()
-            book.title = request.POST.get('title')
-            book.genre = request.POST.get('genre')
-            book.language = request.POST.get('language')
-            book.author = request.POST.get('author')
-            book.summary = request.POST.get('summary')
-            book.isn = request.POST.get('isn')
-            book.file = request.POST.get('file')
-            book.save()
-            return HttpResponseRedirect('/book_add/')
-
-
-def book_delete(request, id):
-    try:
-        book = Book.objects.get(id=id)
-        book.delete()
-        return HttpResponseRedirect('/book_add/')
-    except Book.DoesNotExist:
-        return HttpResponseNotFound("<h2>Книга не найдена</h2>")
-
-
-def book_edit(request, id):
-    book = Book.objects.get(id=id)
-    if request.method == 'POST':
-        book.title = request.POST.get('title')
-        book.genre = request.POST.get('genre')
-        book.language = request.POST.get('language')
-        book.author = request.POST.get('author')
-        book.summary = request.POST.get('summary')
-        book.isn = request.POST.get('isn')
-        book.file = request.POST.get('file')
-        book.save()
-        return HttpResponseRedirect('/book_add/')
-    else:
-        return render(
-            request,
-            'booksweb/book_edit.html',
-            context={
-                'book': book
-            }
-        )
-
+#
+# def book_add(request):
+#     book = Book.objects.all()
+#     bookform = BookForm()
+#     return render(
+#         request,
+#         'booksweb/book_add.html',
+#         context={
+#             'form': bookform,
+#             'book': book
+#         },
+#     )
+#
+#
+# def book_create(request, pk:int):
+#     if request.method == 'POST':
+#         book = Book()
+#         title = request.POST.get('title')
+#         genre = request.POST.get('genre')
+#         language = request.POST.get('language')
+#         author = request.POST.getlist('author')
+#         summary = request.POST.get('summary')
+#         isn = request.POST.get('isn')
+#         file = request.POST.get('file')
+#         instance = Book(
+#             id=pk,
+#             title=title,
+#             genre=Genre.objects.get(name=genre),
+#             language=Language.objects.get(name=language),
+#             author=Author.objects.get(first_name=author),
+#             summary=summary,
+#             isn=isn,
+#             file=file
+#         )
+#         instance.save()
+#         return HttpResponseRedirect('/book_add/')
+#
+#
+# def book_delete(request, id):
+#     try:
+#         book = Book.objects.get(id=id)
+#         book.delete()
+#         return HttpResponseRedirect('/book_add/')
+#     except Book.DoesNotExist:
+#         return HttpResponseNotFound("<h2>Книга не найдена</h2>")
+#
+#
+# def book_edit(request, id):
+#     book = Book.objects.get(id=id)
+#     if request.method == 'POST':
+#         book.title = request.POST.get('title')
+#         book.genre = request.POST.get('genre')
+#         book.language = request.POST.get('language')
+#         book.author = request.POST.get('author')
+#         book.summary = request.POST.get('summary')
+#         book.isn = request.POST.get('isn')
+#         book.file = request.POST.get('file')
+#         book.save()
+#         return HttpResponseRedirect('/book_add/')
+#     else:
+#         return render(
+#             request,
+#             'booksweb/book_edit.html',
+#             context={
+#                 'book': book
+#             }
+#         )
+#
 
 class BookListView(ListView):
     model = Book
@@ -152,5 +159,20 @@ class AuthorListView(ListView):
     paginate_by = 4
 
 
+class BookCreate(CreateView):
+    model = Book
+    fields = '__all__'
+    success_url = reverse_lazy('books')
 
+
+class BookUpdate(UpdateView):
+    model = Book
+    fields = '__all__'
+    success_url = reverse_lazy('books')
+
+
+class BookDelete(DeleteView):
+    model = Book
+    fields = '__all__'
+    success_url = reverse_lazy('books')
 

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block bootstrap5_content %}
+
+   <form action="" method="post">
+       {% csrf_token %}
+       <table>
+           {{ form.as_table }}
+       </table>
+       <input type="submit" value="Сохранить">
+   </form>
+
+{% endblock bootstrap5_content %}
