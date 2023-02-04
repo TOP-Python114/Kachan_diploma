@@ -1,15 +1,20 @@
 from django.conf import settings
 from django.urls import path, re_path
 from django.views.static import serve
-from .views import main_page, authors_add, authors_create, authors_delete,  authors_edit
+from .views import main_page, author_add, author_create, author_delete,  author_edit
+from .views import book_add, book_create, book_delete,  book_edit
 from .views import BookListView, BookDetailView, AuthorListView
 
 urlpatterns = [
     path('', main_page, name='main_page'),
-    path('authors_add/', authors_add, name='authors_add'),
-    path('authors_edit/<int:id>', authors_edit, name='authors_edit'),
-    path('authors_create/', authors_create, name='authors_create'),
-    path('authors_delete/<int:id>', authors_delete, name='authors_delete'),
+    path('author_add/', author_add, name='author_add'),
+    path('author_edit/<int:id>', author_edit, name='author_edit'),
+    path('author_create/', author_create, name='author_create'),
+    path('author_delete/<int:id>', author_delete, name='author_delete'),
+    path('book_add/', book_add, name='book_add'),
+    path('book_edit/<int:id>', book_edit, name='book_edit'),
+    path('book_create/', book_create, name='book_create'),
+    path('book_delete/<int:id>', book_delete, name='book_delete'),
     re_path(r'^books/$', BookListView.as_view(), name='books'),
     re_path(r'^book/(?P<pk>\d+)$', BookDetailView.as_view(), name='book_detail'),
     re_path(r'^authors/$', AuthorListView.as_view(), name='authors'),

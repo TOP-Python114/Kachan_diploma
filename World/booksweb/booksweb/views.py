@@ -1,8 +1,11 @@
-from django.views import generic
+from django.views.generic import ListView, DetailView
 from .models import Book, Author
 from django.shortcuts import render
-from .forms import AuthorsForm
+from .forms import AuthorForm, BookForm
 from django.http.response import HttpResponseRedirect, HttpResponseNotFound
+from django.contrib.auth.decorators import user_passes_test
+
+
 
 
 def main_page(request):
@@ -10,7 +13,6 @@ def main_page(request):
     num_authors = Author.objects.count()
     num_visits = request.session.get('num_visits', 0)
     request.session['num_visits'] = num_visits + 1
-
     return render(
         request,
         'booksweb/main_page.html',
@@ -22,22 +24,22 @@ def main_page(request):
     )
 
 
-def authors_add(request):
+def author_add(request):
     author = Author.objects.all()
-    authorsform = AuthorsForm()
+    authorform = AuthorForm()
     return render(
         request,
-        'booksweb/authors_add.html',
+        'booksweb/author_add.html',
         context={
-            'form': authorsform,
+            'form': authorform,
             'author': author
         },
     )
 
 
-def authors_create(request):
+def author_create(request):
     if request.method == 'POST':
-        form = AuthorsForm(request.POST)
+        form = AuthorForm(request.POST)
         if form.is_valid():
             author = Author()
             author.first_name = request.POST.get('first_name')
@@ -45,19 +47,19 @@ def authors_create(request):
             author.date_of_birth = request.POST.get('date_of_birth')
             author.date_of_death = request.POST.get('date_of_death ')
             author.save()
-            return HttpResponseRedirect('/authors_add/')
+            return HttpResponseRedirect('/author_add/')
 
 
-def authors_delete(request, id):
+def author_delete(request, id):
     try:
         author = Author.objects.get(id=id)
         author.delete()
-        return HttpResponseRedirect('/authors_add/')
+        return HttpResponseRedirect('/author_add/')
     except Author.DoesNotExist:
         return HttpResponseNotFound("<h2>Автор не найден</h2>")
 
 
-def authors_edit(request, id):
+def author_edit(request, id):
     author = Author.objects.get(id=id)
     if request.method == 'POST':
         author.first_name = request.POST.get('first_name')
@@ -65,30 +67,89 @@ def authors_edit(request, id):
         author.date_of_birth = request.POST.get('date_of_birth')
         author.date_of_death = request.POST.get('date_of_death ')
         author.save()
-        return HttpResponseRedirect('/authors_add/')
+        return HttpResponseRedirect('/author_add/')
     else:
         return render(
             request,
-            'booksweb/authors_edit.html',
+            'booksweb/author_edit.html',
             context={
                 'author': author
             }
         )
 
 
-class BookListView(generic.ListView):
+def book_add(request):
+    book = Book.objects.all()
+    bookform = BookForm()
+    return render(
+        request,
+        'booksweb/book_add.html',
+        context={
+            'form': bookform,
+            'book': book
+        },
+    )
+
+
+def book_create(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST)
+        if form.is_valid():
+            book = Book()
+            book.title = request.POST.get('title')
+            book.genre = request.POST.get('genre')
+            book.language = request.POST.get('language')
+            book.author = request.POST.get('author')
+            book.summary = request.POST.get('summary')
+            book.isn = request.POST.get('isn')
+            book.file = request.POST.get('file')
+            book.save()
+            return HttpResponseRedirect('/book_add/')
+
+
+def book_delete(request, id):
+    try:
+        book = Book.objects.get(id=id)
+        book.delete()
+        return HttpResponseRedirect('/book_add/')
+    except Book.DoesNotExist:
+        return HttpResponseNotFound("<h2>Книга не найдена</h2>")
+
+
+def book_edit(request, id):
+    book = Book.objects.get(id=id)
+    if request.method == 'POST':
+        book.title = request.POST.get('title')
+        book.genre = request.POST.get('genre')
+        book.language = request.POST.get('language')
+        book.author = request.POST.get('author')
+        book.summary = request.POST.get('summary')
+        book.isn = request.POST.get('isn')
+        book.file = request.POST.get('file')
+        book.save()
+        return HttpResponseRedirect('/book_add/')
+    else:
+        return render(
+            request,
+            'booksweb/book_edit.html',
+            context={
+                'book': book
+            }
+        )
+
+
+class BookListView(ListView):
     model = Book
     paginate_by = 3
 
 
-class BookDetailView(generic.DetailView):
+class BookDetailView(DetailView):
     model = Book
 
 
-class AuthorListView(generic.ListView):
+class AuthorListView(ListView):
     model = Author
     paginate_by = 4
-
 
 
 

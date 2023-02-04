@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block bootstrap5_content %}
+
+    <h3>Список книг</h3>
+    <table>
+        <thead><th>id</th><th>----Название----</th><th></th></thead>
+        {% if book %}
+            {% for book in book.all %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td><a href="/book_edit/{{ book.id }}">Изменить</a>
+                        <a href="/book_delete/{{ book.id }}">Удалить</a></td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <p>В базе данных книги отсутствуют</p>
+        {% endif %}
+    </table>
+
+    <h3>Добавить книгу</h3>
+    <form method="POST" action="/book_create/">
+        {% csrf_token %}
+            <table>
+                {{ form }}
+            </table>
+            <input type="submit" value="Сохранить">
+    </form>
+
+{% endblock bootstrap5_content %}
+

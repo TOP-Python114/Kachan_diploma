@@ -5,10 +5,13 @@
             <td><a href="{% url 'main_page' %}">Главная</a></td>
             <td><a href="{% url 'books' %}">Все книги</a></td>
             <td><a href="{% url 'authors' %}">Все авторы</a></td>
-            <td><a href="{% url 'authors_add' %}">Измение списка авторов</a></td>
+            {% if user.is_superuser %}
+                <td><a href="{% url 'author_add' %}">Измение списка авторов</a></td>
+                <td><a href="{% url 'book_add' %}">Изменение списка книг</a></td>
+            {% endif %}
             {% if user.is_authenticated %}
                 <td>Пользователь: {{ user.get_username }} </td>
-                <td><a href="{% url 'logout' %}?next={{ request.path }}">Выход</a></td>
+                <td><a href="{% url 'logout' %}">Выход</a></td>
             {% else %}
                 <td><a href="{% url 'login' %}?next={{ request.path }}">Вход</a></td>
             {% endif %}
