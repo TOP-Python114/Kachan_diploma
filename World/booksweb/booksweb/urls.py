@@ -11,7 +11,7 @@ urlpatterns = [
     re_path(r'^books/$', BookListView.as_view(), name='books'),
     re_path(r'^book/(?P<pk>\d+)$', BookDetailView.as_view(), name='book_detail'),
     re_path(r'^authors/$', AuthorListView.as_view(), name='authors'),
-    re_path(r'^media/(?P<path>.*)$', serve, {'document_root':settings.MEDIA_ROOT})
+    re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
 
 
 ]

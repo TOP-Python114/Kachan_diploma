@@ -119,7 +119,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 # Default primary key field type
@@ -134,12 +134,6 @@ LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# DEFAULT_FROM_EMAIL =
-# EMAIL_HOST_USER =
-#
-# EMAIL_PASSWORD = 'ST2120%fyfgf'
-# EMAIL_HOST = 'smtp.mail.ru'
-# EMAIL_PORT = 587
 
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525

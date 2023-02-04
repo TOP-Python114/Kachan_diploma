@@ -5,6 +5,12 @@
             <td><a href="{% url 'main_page' %}">Главная</a></td>
             <td><a href="{% url 'books' %}">Все книги</a></td>
             <td><a href="{% url 'authors' %}">Все авторы</a></td>
+            {% if user.is_authenticated %}
+                <td>Пользователь: {{ user.get_username }} </td>
+                <td><a href="{% url 'logout' %}?next={{ request.path }}">Выход</a></td>
+            {% else %}
+                <td><a href="{% url 'login' %}?next={{ request.path }}">Вход</a></td>
+            {% endif %}
         </tr>
     </table>
     <hr>
