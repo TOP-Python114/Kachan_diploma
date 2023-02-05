@@ -14,29 +14,11 @@ class AuthorForm(forms.Form):
                                     initial=format(date.today()),
                                     widget=forms.widgets.DateInput(attrs={'type': 'date'}))
 
-#
-# class BookForm(forms.Form):
-#     title = forms.CharField(label='Название книги')
-#     genre = forms.MultipleChoiceField(
-#         choices=[(p.id, p.name) for p in Genre.objects.all()],
-#         label="Жанр книги"
-#     )
-#     language = forms.MultipleChoiceField(
-#         choices=[(p.id, p.name) for p in Language.objects.all()],
-#         label="Язык книги"
-#     )
-#     author = forms.MultipleChoiceField(
-#         choices=[(p.id, p.last_name) for p in Author.objects.all()],
-#         label="Автор книги")
-#     summary = forms.CharField(label="Аннотация книги")
-#     isn = forms.CharField(label="ISBN книги")
-#     file = forms.FileField(label="Файл")
-
 
 class BookModelForm(ModelForm):
     class Meta:
         model = Book
-        fields = ['title', 'genre', 'language','author', 'summary', 'isn','file']
+        fields = ['title', 'genre', 'language', 'author', 'summary', 'isn', 'file']
 
 
 

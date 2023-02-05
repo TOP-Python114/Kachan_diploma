@@ -3,9 +3,9 @@
 {% block bootstrap5_content %}
 
     <h1>Список книг в БД</h1>
-    {% if book_list %}
+    {% if object_list %}
     <ul>
-        {% for book in book_list %}
+        {% for book in object_list  %}
         <li>
             <a href="{{ book.get_absolute_url }}">
                {{ book.title }}</a>
