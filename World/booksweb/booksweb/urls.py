@@ -3,8 +3,9 @@ from django.urls import path, re_path
 from django.views.static import serve
 
 
-from .views import main_page, author_add, author_create, author_delete,  author_edit, book_update_delete
-from .views import BookListView, BookDetailView, AuthorListView
+from .views import main_page, author_add, author_create, author_delete, author_edit, book_update_delete
+
+from .views import BookListView, BookDetailView, AuthorListView,  SearchResultsView
 from .views import BookCreate, BookUpdate, BookDelete
 
 urlpatterns = [
@@ -21,6 +22,7 @@ urlpatterns = [
     re_path(r'^book/(?P<pk>\d+)$', BookDetailView.as_view(), name='book_detail'),
     re_path(r'^authors/$', AuthorListView.as_view(), name='authors'),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+    path('book_list/', SearchResultsView.as_view(), name='book_list'),
 
 ]
 

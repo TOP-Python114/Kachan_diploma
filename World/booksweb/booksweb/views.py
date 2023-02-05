@@ -5,6 +5,7 @@ from .forms import AuthorForm
 from django.http.response import HttpResponseRedirect, HttpResponseNotFound
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 
 def main_page(request):
@@ -117,3 +118,14 @@ class BookDelete(DeleteView):
     fields = '__all__'
     success_url = reverse_lazy('book_update_delete')
 
+class SearchResultsView(ListView):
+    model = Book
+    template_name = 'book_list.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Book.objects.filter(
+            Q(title__icontains=query) | Q(genre__name__icontains=query) | Q(author__last_name__icontains=query)
+            | Q(author__first_name__icontains=query)
+        )
+        return object_list
