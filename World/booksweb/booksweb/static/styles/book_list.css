@@ -1,0 +1,36 @@
+
+h1 {
+    margin: 0px 0px 20px 40px;
+}
+
+li {
+
+    list-style-type: none;
+}
+
+
+.book-title {
+    margin: 0px 0px 20px 40px;
+}
+
+.book-list {
+    display: flex;
+    width: 350px;
+    height: 160px;
+    margin: 12px;
+    padding: 10px;
+    border: 1px solid rgb(50, 50, 50);
+    border-radius: 4px;
+    background-color:#5bcef4;
+    cursor: pointer;
+}
+
+.book-list .poster img {
+    float: left;
+    object-fit: cover;
+    width: 100px;
+    height: 138px;
+}
+
+
+

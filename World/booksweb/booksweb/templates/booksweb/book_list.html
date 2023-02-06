@@ -1,21 +1,30 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block bootstrap5_content %}
 
+<link rel="stylesheet" href="{% static 'styles/book_list.css' %}">
 
-    <h1>Список книг в БД</h1>
-    {% if book_list %}
+    <h1>Список книг</h1>
     <ul>
-        {% for book in book_list %}
         <li>
-            <a href="{{ book.get_absolute_url }}">
-               {{ book.title }}</a>
-                ({{ book.genre }})
+        {% if book_list %}
+            {% for book in book_list %}
+            <div class="book-list">
+                <div class="poster">
+                    {% if book.image %}
+                        <img  src="{{ book.image.url }}">
+                    {% else %}
+                        Нет картинки
+                    {% endif %}
+                    <a class="book-title" href="{{ book.get_absolute_url }}">
+                        {{ book.title }}</a>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>В базе данных нет книг</p>
+        {% endif %}
         </li>
-        {% endfor %}
     </ul>
-    {% else %}
-        <p>В базе данных нет книг</p>
-    {% endif %}
 
 {% endblock bootstrap5_content %}

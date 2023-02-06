@@ -1,21 +1,31 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block bootstrap5_content %}
-
-    <h1>Название книги: {{ book.title }} </h1>
-    <p><strong>Жанр: {{ book.genre }} </strong></p>
-    <p><strong>Аннотация: {{ book.summary }} </strong></p>
-    <p><strong>ISBN: {{ book.isbn }} </strong></p>
-    <p><strong>Язык: {{ book.language }} </strong></p>
-    {% for author in book.author.all %}
-        <p><strong>Автор:</strong>
-            <a href="">{{ author.first_name }}
-                {{ author.last_name }}</a></p>
-    {% endfor %}
-    {% if user.is_authenticated %}
-        <div>
-            <a href="{{book.file.url}}" download="{{book.file.url}}">Скачать</a>
+<link rel="stylesheet" href="{% static 'styles/book_detail.css' %}">
+    <h1>{{ book.title }} </h1>
+    <div class="book-detail">
+        <div class="poster">
+            {% if book.image %}
+                <img src="{{ book.image.url }}">
+            {% else %}
+                Нет картинки
+            {% endif %}
         </div>
-    {% endif %}
-
+        <div class="info">
+            <p><strong>Жанр: {{ book.genre }} </strong></p>
+            <p><strong>Аннотация: {{ book.summary }} </strong></p>
+            <p><strong>Язык: {{ book.language }} </strong></p>
+                {% for author in book.author.all %}
+                    <p><strong>Автор:</strong>
+                        <a href="">{{ author.first_name }}
+                            {{ author.last_name }}</a></p>
+                {% endfor %}
+            {% if user.is_authenticated %}
+            <div>
+                <a href="{{book.file.url}}" download="{{book.file.url}}">Скачать</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
 {% endblock bootstrap5_content %}

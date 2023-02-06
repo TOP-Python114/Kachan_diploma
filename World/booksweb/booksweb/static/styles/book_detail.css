@@ -1,0 +1,26 @@
+
+h1{
+    margin: 20px 0px 20px 20px;
+}
+.book-detail {
+    display: flex;
+    width: 800px;
+    height: 600px;
+    margin: 20px 0px 20px 20px;
+    padding: 16px;
+    border: 1px solid rgb(50, 50, 50);
+    border-radius: 6px;
+    background-color: #5bcef4;
+}
+
+.book-detail .info {
+    margin-left: 45px;
+    width: 450px;
+}
+
+.book-detail .poster img {
+    object-fit: cover;
+    width: 300px;
+    height: 400px;
+}
+

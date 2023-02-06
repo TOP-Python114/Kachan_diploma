@@ -88,7 +88,13 @@ class Book(models.Model):
     file = models.FileField(
         null=True,
         blank=True,
-        upload_to='media/',
+        upload_to='files/',
+
+    )
+    image = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to='images/',
 
     )
 
