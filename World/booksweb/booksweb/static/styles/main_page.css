@@ -1,0 +1,27 @@
+
+h1{
+     text-align: center;
+     margin: 20px;
+}
+
+table{
+    margin: auto;
+}
+
+
+.logo{
+    float: left;
+    object-fit: cover;
+    width: 410px;
+    height: 400px;
+}
+li{
+    padding: 10px;
+}
+.picture{
+    float: left;
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+}
+

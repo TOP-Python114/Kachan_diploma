@@ -5,17 +5,10 @@
 {% endblock bootstrap5_title %}
 
 {% block bootstrap5_extra_head %}
+  {% include "includes/navbar.html" %}
 {% endblock bootstrap5_extra_head %}
 
 {% block bootstrap5_before_content %}
-<!-- header -->
-    <div class="container-fluid">
-        {% block header %}
-            {% include "includes/navbar.html" %}
-            {% include "search_template.html" %}
-        {% endblock header %}
-    </div>
-<!-- /header -->
 {% endblock bootstrap5_before_content %}
 
 {% block bootstrap5_content %}
@@ -48,5 +41,3 @@
 
 {% block bootstrap5_extra_script %}
 {% endblock bootstrap5_extra_script %}
-
-

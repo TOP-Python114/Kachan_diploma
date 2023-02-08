@@ -1,13 +1,15 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block bootstrap5_content %}
 
    <form action="" method="post">
-       {% csrf_token %}
-       <table>
-           {{ form.as_table }}
-       </table>
-       <input type="submit" value="Сохранить">
+       <div class="form-outline">
+           {% csrf_token %}
+           <table>
+               {{ form.as_table }}
+           </table>
+           <input type="submit"  value="Сохранить">
+       </div>
    </form>
 
 {% endblock bootstrap5_content %}

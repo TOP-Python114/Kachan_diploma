@@ -1,12 +1,22 @@
+
 {% extends "base.html" %}
-
+{% load static %}
 {% block bootstrap5_content %}
-
-    <h1>Главная</h1>
-    <ul>
-        <li><strong>Количество книг:</strong> {{ num_books }}</li>
-        <li><strong>Количество авторов книг:</strong> {{ num_authors }}</li>
-    </ul>
-    <p>Количество посещений данной страницы - {{ num_visits }}</p>
+<link rel="stylesheet" href="{% static 'styles/main_page.css' %}">
+    <h1>BOOKS HOME</h1>
+    <table width="60%" cellspacing="0" cellpadding="0" class="table_center_by_css">
+        <tr>
+            <td class="centercol">
+                <img class="logo" src="media/images/logo3.png"></td>
+            <td>
+                <ul>
+                    <li><img class="picture" src="media/images/books.jpg"><strong>Количество книг:</strong> {{ num_books }}</li>
+                    <li><img class="picture" src="media/images/authors.jpg"><strong>Количество авторов книг:</strong> {{ num_authors }}</li>
+                    <li><img class="picture" src="media/images/users.jpg">Количество посещений данной страницы - {{ num_visits }}</li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>
 
 {% endblock bootstrap5_content %}
