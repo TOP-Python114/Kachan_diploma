@@ -1,0 +1,43 @@
+
+input, select, textarea {
+        width:500px;
+        margin-top: 10px;
+        border-color: grey;
+        border-radius: 5px 5px;
+        border-width: 0.5px;
+}
+
+label {
+    font-family: Helvetica, sans-serif;
+}
+
+table {
+    width: 50%;
+    cellspacing=0;
+    cellpadding=4;
+}
+
+
+
+input[type='submit'] {
+    background-color:  #03c03c;
+    color: white;
+}
+
+thead {
+    background-color:  #03c03c;
+    color: white;
+    border-color: grey;
+    border-radius: 5px 5px;
+    border-width: 0.5px;
+}
+
+.container-main{
+    margin-top: 20px;
+    margin-bottom: 170px;
+
+}
+
+#button-save{
+    margin-left: 140px;
+}

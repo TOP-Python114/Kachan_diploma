@@ -5,6 +5,7 @@ from django.views.static import serve
 
 from .views import main_page, author_add, author_create, author_delete, author_edit, book_update_delete
 
+
 from .views import BookListView, BookDetailView, AuthorListView,  SearchResultsView
 from .views import BookCreate, BookUpdate, BookDelete
 

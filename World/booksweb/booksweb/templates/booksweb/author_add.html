@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 {% block bootstrap5_content %}
+<link rel="stylesheet" href="{% static 'styles/author_add.css' %}">
 
-    <h3>Список авторов в БД</h3>
+<div class="container-main">
+<div class="container">
+    <h3>Aвторы</h3>
     <table>
-        <thead><th>id</th><th>----Имя----</th><th>Фамилия</th><th></th></thead>
+        <thead><th>id</th><th>Имя</th><th>Фамилия</th><th></th></thead>
         {% if author %}
             {% for author in author.all %}
                 <tr>
@@ -26,9 +29,10 @@
             <table>
                 {{ form }}
             </table>
-            <input type="submit" value="Сохранить">
+            <input type="submit" value="Сохранить" id="button-save">
     </form>
-
+</div>
+</div>
 {% endblock bootstrap5_content %}
 
 

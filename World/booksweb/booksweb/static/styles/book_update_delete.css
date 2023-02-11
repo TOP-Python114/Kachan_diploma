@@ -1,0 +1,33 @@
+
+input[type='submit'] {
+    background-color:#5bcef4;
+    color: white;
+}
+
+thead {
+    background-color:  #03c03c;
+    color: white;
+    border-color: grey;
+    border-radius: 5px 5px;
+    border-width: 0.5px;
+}
+
+.container-main{
+    margin-top: 20px;
+    margin-bottom: 170px;
+
+}
+
+table {
+    width: 70%;
+    height: 200%;
+}
+
+a {
+    color: #03c03c;
+}
+
+
+a:hover {
+    color: grey;
+}

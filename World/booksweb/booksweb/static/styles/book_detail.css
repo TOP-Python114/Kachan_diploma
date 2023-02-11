@@ -9,8 +9,8 @@ h1{
     margin: 20px 0px 20px 20px;
     padding: 16px;
     border: 1px solid rgb(50, 50, 50);
-    border-radius: 6px;
-    background-color: #5bcef4;
+    border-radius: 5px;
+    background-color: #48e25c;
 }
 
 .book-detail .info {

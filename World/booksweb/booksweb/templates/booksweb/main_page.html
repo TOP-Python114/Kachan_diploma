@@ -3,20 +3,22 @@
 {% load static %}
 {% block bootstrap5_content %}
 <link rel="stylesheet" href="{% static 'styles/main_page.css' %}">
+
+
+<div class="container-main">
     <h1>BOOKS HOME</h1>
-    <table width="60%" cellspacing="0" cellpadding="0" class="table_center_by_css">
+     <table width="60%" cellspacing="0" cellpadding="0" class="table_center_by_css">
         <tr>
             <td class="centercol">
                 <img class="logo" src="media/images/logo3.png"></td>
             <td>
                 <ul>
-                    <li><img class="picture" src="media/images/books.jpg"><strong>Количество книг:</strong> {{ num_books }}</li>
-                    <li><img class="picture" src="media/images/authors.jpg"><strong>Количество авторов книг:</strong> {{ num_authors }}</li>
-                    <li><img class="picture" src="media/images/users.jpg">Количество посещений данной страницы - {{ num_visits }}</li>
+                    <li class="li-text"><img class="picture" src="media/images/books.jpg"><strong>Количество книг:</strong> {{ num_books }}</li>
+                    <li class="li-text"><img class="picture" src="media/images/authors.jpg"><strong>Количество авторов:</strong> {{ num_authors }}</li>
+                    <li class="li-text"><img class="picture" src="media/images/users.jpg"><strong>Посещения:</strong> {{ num_visits }}</li>
                 </ul>
             </td>
         </tr>
     </table>
 </div>
-
 {% endblock bootstrap5_content %}

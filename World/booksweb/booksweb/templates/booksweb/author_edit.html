@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block bootstrap5_content %}
-
-    <h3>Список авторов</h3>
+<link rel="stylesheet" href="{% static 'styles/author_edit.css' %}">
+<div class="container-main">
+<div class="container">
     <h4>{{author.first_name}} {{author.last_name}}</h4>
 
     <form method="POST">
@@ -21,6 +22,7 @@
                 value="{{ author.date_of_death }}"></p>
         <input type="submit" value="Сохранить">
     </form>
-
+</div>
+</div>
 {% endblock bootstrap5_content %}
 

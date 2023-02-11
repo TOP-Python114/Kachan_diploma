@@ -15,8 +15,8 @@ li {
 
 .book-list {
     display: flex;
-    width: 350px;
-    height: 160px;
+    width: 150px;
+    height: 60px;
     margin: 12px;
     padding: 10px;
     border: 1px solid rgb(50, 50, 50);

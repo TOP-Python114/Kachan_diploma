@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="{% static 'styles/base.css' %}">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
   <div class="container-fluid">
-        <img src="media/images/logo.png">
+        <img src="{% static 'styles/logo.png' %}">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -35,7 +35,7 @@
       </form>
       <ul class="nav navbar-nav ml-auto">
         {% if user.is_authenticated %}
-          <li class="nav-item"><span class="glyphicon glyphicon-phone"></span>{{ user.get_username }} </li>
+          <li class="nav-item"><i class="bi bi-bookmark-plus-fill text-primary"></i>{{ user.get_username }} </li>
           <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}" tabindex="-1"><i class=”fa fa-book”></i>Выход</a></li>
         {% else %}
           <li class="nav-item"><a class="nav-link" href="{% url 'login' %}?next={{ request.path }}" tabindex="-1"><span class="fas fa-user">⎆</span></a></li>
