@@ -23,7 +23,6 @@ def main_page(request):
         },
     )
 
-
 def author_add(request):
     return render(
         request,
@@ -35,18 +34,17 @@ def author_add(request):
     )
 
 
-
 def author_create(request):
     if request.method == 'POST':
         form = AuthorForm(request.POST)
-        if form.is_valid():
-            author = Author()
-            author.first_name = request.POST.get('first_name')
-            author.last_name = request.POST.get('last_name')
-            author.date_of_birth = request.POST.get('date_of_birth')
-            author.date_of_death = request.POST.get('date_of_death ')
-            author.save()
-            return HttpResponseRedirect('/author_add/')
+        author = Author()
+        author.first_name = request.POST.get('first_name')
+        author.last_name = request.POST.get('last_name')
+        author.date_of_birth = request.POST.get('date_of_birth')
+        author.date_of_death = request.POST.get('date_of_death')
+        author.foto_author = request.POST.get('foto_author')
+        author.save()
+        return HttpResponseRedirect('/author_add/')
 
 
 def author_delete(request, id):

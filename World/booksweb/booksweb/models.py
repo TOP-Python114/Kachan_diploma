@@ -43,7 +43,7 @@ class Author(models.Model):
         null=True,
         blank=True
     )
-    foto = models.ImageField(
+    foto_author = models.ImageField(
         null=True,
         blank=True,
         upload_to='images/',

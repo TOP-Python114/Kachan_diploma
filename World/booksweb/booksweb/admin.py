@@ -11,7 +11,7 @@ from .models import Author, Book, Genre, Language
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name')
     fields = ['last_name', 'first_name',
-              ('date_of_birth', 'date_of_death')]
+              ('date_of_birth', 'date_of_death'), 'foto_author']
 
 
 @admin.register(Genre)

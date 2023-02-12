@@ -1,7 +1,12 @@
 
-h1{
+h1 {
     margin: 20px 0px 20px 20px;
 }
+
+a {
+    color: black;
+}
+
 .book-detail {
     display: flex;
     width: 800px;
@@ -10,7 +15,7 @@ h1{
     padding: 16px;
     border: 1px solid rgb(50, 50, 50);
     border-radius: 5px;
-    background-color: #48e25c;
+    background-color: #60eb7e;
 }
 
 .book-detail .info {

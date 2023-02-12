@@ -13,12 +13,13 @@ class AuthorForm(forms.Form):
     date_of_death = forms.DateField(label='Дата смерти',
                                     initial=format(date.today()),
                                     widget=forms.widgets.DateInput(attrs={'type': 'date'}))
+    foto_author = forms.ImageField(label='Фото')
 
 
 class BookModelForm(ModelForm):
     class Meta:
         model = Book
-        fields = ['title', 'genre','language','author','summary','isn','file','image', ]
+        fields = ['title', 'genre', 'language', 'author', 'summary', 'isn', 'file', 'image']
 
 
 
