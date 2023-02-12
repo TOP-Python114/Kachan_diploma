@@ -142,7 +142,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 2525
 EMAIL_HOST_USER = 'bookshomeworld@mail.ru'
-EMAIL_HOST_PASSWORD = 'Tkew6j3XkPSmhaJerW7a'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 
 SERVER_EMAIL = EMAIL_HOST_USER
