@@ -1,31 +1,32 @@
 {% extends "base.html" %}
 {% load static %}
 {% block bootstrap5_content %}
+
 <link rel="stylesheet" href="{% static 'styles/author_edit.css' %}">
 <div class="container-main">
-<div class="container">
-    <h4>{{author.first_name}} {{author.last_name}}</h4>
+    <div class="container">
+        <h4>{{author.first_name}} {{author.last_name}}</h4>
+        <form method="POST">
+            {% csrf_token %}
+            <p> <label>Изменить имя</label><br>
+                <input type="text" name="first_name"
+                    value="{{ author.first_name }}"></p>
+            <p> <label>Изменить фамилию</label><br>
+                <input type="text" name="last_name"
+                    value="{{ author.last_name }}"></p>
+            <p> <label>Изменить дату рождения</label><br>
+                <input type="date" name="date_of_birth"
+                    value="{{ author.date_of_birth }}"></p>
+            <p> <label>Изменить дату смерти</label><br>
+                <input type="date" name="date_of_death"
+                    value="{{ author.date_of_death }}"></p>
+             <p> <label>Вставить фото</label><br>
+                <input type="file" name="foto_author"
+                    value="{{ author.foto_author }}"></p>
+            <input type="submit" value="Сохранить">
+        </form>
+    </div>
+</div>
 
-    <form method="POST">
-        {% csrf_token %}
-        <p> <label>Изменить имя</label><br>
-            <input type="text" name="first_name"
-                value="{{ author.first_name }}"></p>
-        <p> <label>Изменить фамилию</label><br>
-            <input type="text" name="last_name"
-                value="{{ author.last_name }}"></p>
-        <p> <label>Изменить дату рождения</label><br>
-            <input type="date" name="date_of_birth"
-                value="{{ author.date_of_birth }}"></p>
-        <p> <label>Изменить дату смерти</label><br>
-            <input type="date" name="date_of_death"
-                value="{{ author.date_of_death }}"></p>
-         <p> <label>Вставить фото</label><br>
-            <input type="file" name="foto_author"
-                value="{{ author.foto_author }}"></p>
-        <input type="submit" value="Сохранить">
-    </form>
-</div>
-</div>
 {% endblock bootstrap5_content %}
 

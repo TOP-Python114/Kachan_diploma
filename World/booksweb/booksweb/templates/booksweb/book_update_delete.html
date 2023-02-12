@@ -1,27 +1,28 @@
 {% extends "base.html" %}
 {% load static %}
 {% block bootstrap5_content %}
+
 <link rel="stylesheet" href="{% static 'styles/book_update_delete.css' %}">
 <div class="container-main">
-<div class="container">
-    <h1>Книги</h1>
-    {% if object_list %}
-     <table>
-        <thead><th>Наименование</th><th>Жанр</th><th></th><th></th></thead>
-        {% for book in object_list  %}
-        <tr>
-            <th><a href="{{ book.get_absolute_url }}">
-               {{ book.title }}</a></th>
-            <th>{{ book.genre }}</th>
-            <th><a href="/book/update/{{ book.id }}">Изменить</a></th>
-            <th><a href="/book/delete/{{ book.id }}">Удалить</a></th>
-        </tr>
-        {% endfor %}
-         </table>
-    {% else %}
-        <p>В базе данных нет книг</p>
-    {% endif %}
+    <div class="container">
+        <h1>Книги</h1>
+        {% if object_list %}
+             <table>
+                <thead><th>Наименование</th><th>Жанр</th><th></th><th></th></thead>
+                {% for book in object_list  %}
+                <tr>
+                    <th><a href="{{ book.get_absolute_url }}">
+                       {{ book.title }}</a></th>
+                    <th>{{ book.genre }}</th>
+                    <th><a href="/book/update/{{ book.id }}">Изменить</a></th>
+                    <th><a href="/book/delete/{{ book.id }}">Удалить</a></th>
+                </tr>
+                {% endfor %}
+             </table>
+        {% else %}
+            <p>В базе данных нет книг</p>
+        {% endif %}
+    </div>
+</div>
 
-</div>
-</div>
 {% endblock bootstrap5_content %}

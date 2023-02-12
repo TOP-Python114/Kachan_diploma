@@ -4,7 +4,6 @@ h1 {
 }
 
 li {
-
     list-style-type: none;
 }
 
@@ -17,9 +16,9 @@ a {
 }
 
 .book-list {
-    display: flex;
-    width: 450px;
-    height: 260px;
+    display: inline-block;
+    width: 320px;
+    height: 160px;
     margin: 12px;
     padding: 10px;
     border: 1px solid rgb(50, 50, 50);

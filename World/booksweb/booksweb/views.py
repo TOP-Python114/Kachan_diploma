@@ -88,7 +88,7 @@ def book_update_delete(request):
 
 class BookListView(ListView):
     model = Book
-    paginate_by = 3
+    paginate_by = 8
 
 
 class BookDetailView(DetailView):
@@ -97,7 +97,7 @@ class BookDetailView(DetailView):
 
 class AuthorListView(ListView):
     model = Author
-    paginate_by = 4
+    paginate_by = 8
 
 
 class BookCreate(CreateView):
